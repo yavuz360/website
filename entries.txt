@@ -1,0 +1,115 @@
+[POST]
+title: This is testing
+type: archived
+date: 2025-09-12
+
+This is another** testing*
+
+--Links--
+TestLink*=https://com.com
+TestFail**-Testing
+
+-------------
+
+[POST]
+title: Welcome to My New Blog System
+type: current
+date: 2024-09-12
+
+This is my first post using the new single-file blog system! I can write naturally here without worrying about multiple files or complex formatting. The system automatically parses this content and displays it beautifully on my website.
+
+I'm excited about this approach because it makes writing and editing so much easier. I can just open this one file, scroll to where I want to add content, and start typing. No more managing dozens of numbered files!
+
+This post demonstrates the basic format with a title, type, and date header, followed by natural content writing.
+
+--Links--
+GitHub Repository*=https://github.com/example/repo
+Documentation*-Coming soon after I finish the system
+Live Demo*=https://example.com/demo
+
+-------------
+
+[POST]
+title: Technical Deep Dive - Building a Single File Blog Parser
+type: current
+date: 2024-09-10
+
+Today I worked on creating a JavaScript parser that can handle blog entries from a single text file. The challenge was designing a format that feels natural to write in while being easy to parse programmatically.
+
+The key insight was using the
+
+-------------
+
+[POST]
+title: Why I Switched from Multiple Files to Single File
+type: archived
+date: 2024-09-05
+
+Previously, I was using a system with numbered files like 001.txt, 002.txt, etc. While this worked, it had several drawbacks:
+
+1. File management overhead - creating new numbered files
+2. Difficult to reorder posts
+3. Hard to see the full picture of my content
+4. Version control showed many file changes instead of content changes
+
+The single file approach solves all of these issues. Now I can:
+- Write continuously in one place
+- Easily reorder posts by cut and paste
+- See my entire blog content at once
+- Get clean git diffs that show actual content changes
+
+This is much more maintainable and writer-friendly.
+
+--Links--
+Old System Demo*=https://old.example.com
+Migration Guide*-Writing this next week
+Performance Comparison*=https://perf.example.com
+
+-------------
+
+[POST]
+title: Future Plans and Ideas
+type: current
+date: 2024-09-08
+
+I'm planning to build several enhancements to this blog system:
+
+1. A Mac desktop app for easy blog editing with live preview
+2. Support for markdown formatting within posts
+3. Automatic cross-reference detection and linking
+4. Tag-based filtering and search
+5. RSS feed generation from the single file
+
+The beauty of this system is that it's just a text file, so it's incredibly portable and future-proof. I can edit it with any text editor, version control it with git, and the parsing logic can evolve without breaking old content.
+
+I'm also considering adding support for different post types like 'draft', 'featured', or custom categories.
+
+--Links--
+Roadmap Document*=https://roadmap.example.com
+Feature Requests*=https://github.com/example/issues
+Mac App Preview*-In development
+
+-------------
+
+[POST]
+title: Setting Up Local Development
+type: archived
+date: 2024-08-30
+
+When developing this blog system locally, I ran into CORS issues when trying to fetch the blog file from JavaScript. The solution was to serve the files through a local HTTP server instead of opening them directly in the browser.
+
+Here's what I learned about local development:
+- Use `python -m http.server 8000` for quick local serving
+- Place the entries.txt file in the same directory as your HTML files
+- Update the baseUrl in your JavaScript to point to the local server
+- Test both current and archived post filtering
+
+This setup makes development much smoother and avoids cross-origin restrictions.
+
+--Links--
+Local Server Guide*=https://developer.mozilla.org/docs/server
+CORS Explanation*=https://developer.mozilla.org/docs/cors
+Python HTTP Server*=https://docs.python.org/3/library/http.server.html
+
+-------------
+

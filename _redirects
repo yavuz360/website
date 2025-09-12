@@ -1,0 +1,11 @@
+# Clean URLs - Remove .html extensions
+/blogs.html /blogs 301
+/404.html /404 301
+
+# Clean URL redirects (serve .html files for clean URLs)
+/blogs /blogs.html 200
+/about /index.html#about 200
+/contact /index.html#contact 200
+
+# Handle 404 errors
+/* /404.html 404

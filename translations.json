@@ -1,0 +1,276 @@
+{
+  "website_translations": {
+    "en": {
+      "navigation": {
+        "about_me": "About me",
+        "contact": "Contact",
+        "blogs": "Blogs",
+        "toggle_menu": "Toggle Menu",
+        "toggle_dark_mode": "Toggle dark mode",
+        "back_to_top": "Back to top"
+      },
+      "hero": {
+        "greeting": "Hi, I'm",
+        "name": "Yavuz",
+        "description": "— a gray hat who always has an eye on vulnerabilities.",
+        "welcome": "Welcome to my corner of the internet.",
+        "cta_about": "About me",
+        "cta_blogs": "Blogs"
+      },
+      "about": {
+        "title": "About",
+        "intro": "I'm Yavuz. I often try my way into vulnerable servers left around over the internet. Other than that I'm currently playing around with python.",
+        "disclaimer": "But don't worry, I'll let you know the vulnerabilities, if you let me.",
+        "accounts": "My",
+        "codeberg_account": "codeberg account",
+        "github_account": "github account",
+        "hosting_thanks": "Thanks to",
+        "github_pages": "GitHub Pages",
+        "hosting_text": "for hosting this website, for free."
+      },
+      "contact": {
+        "title": "Contact",
+        "message": "You can reach me at",
+        "follow_up": ". I will get in touch once I read your message."
+      },
+      "blog": {
+        "title": "Blogs",
+        "current": "Current",
+        "archived": "Archived",
+        "previous": "← Previous",
+        "next": "Next →",
+        "page": "Page",
+        "loading": "Loading blog posts...",
+        "no_posts": "No blog posts found. Check back later!",
+        "resources": "Resources"
+      },
+      "error_404": {
+        "title": "404",
+        "subtitle": ": Not Found",
+        "cat_intro": "The Technician Cat:",
+        "cat_message": "meow meow, meow meow meow mreeow",
+        "return_home": "Return Home"
+      },
+      "footer": {
+        "made_with": "Made with ❤️ and 💻"
+      },
+      "disclaimer": {
+        "text": "⚠️ All content is purely educational. No responsibility taken."
+      },
+      "meta": {
+        "site_description": "The personal website of gray hat Yavuz.",
+        "og_description": "Student learner",
+        "blog_description": "Latest blog posts and thoughts from Yavuz.",
+        "blog_og_description": "Latest blog posts",
+        "error_description": "Page not found - The technician cat is here to help!",
+        "error_og_description": "Page not found, meowww"
+      }
+    },
+    "tr": {
+      "navigation": {
+        "about_me": "Hakkımda",
+        "contact": "İletişim",
+        "blogs": "Blog",
+        "toggle_menu": "Menüyü Aç/Kapat",
+        "toggle_dark_mode": "Karanlık modu aç/kapat",
+        "back_to_top": "Başa dön"
+      },
+      "hero": {
+        "greeting": "Merhaba, ben",
+        "name": "Yavuz",
+        "description": "— güvenlik açıklarını her zaman takip eden bir gray hat.",
+        "welcome": "İnternetteki köşeme hoş geldiniz.",
+        "cta_about": "Hakkımda",
+        "cta_blogs": "Blog"
+      },
+      "about": {
+        "title": "Hakkımda",
+        "intro": "Ben Yavuz. İnternette bırakılmış güvenlik açığı olan sunuculara girmeye çalışırım. Bunun dışında şu anda Python ile uğraşıyorum.",
+        "disclaimer": "Ama merak etme, izin verirsen güvenlik açıklarını sana bildiririm.",
+        "accounts": "Benim",
+        "codeberg_account": "codeberg hesabım",
+        "github_account": "github hesabım",
+        "hosting_thanks": "Bu web sitesini ücretsiz sunduğu için",
+        "github_pages": "GitHub Pages",
+        "hosting_text": "'e teşekkürler."
+      },
+      "contact": {
+        "title": "İletişim",
+        "message": "Bana şu adresten ulaşabilirsiniz:",
+        "follow_up": ". Mesajınızı okuduktan sonra size geri döneceğim."
+      },
+      "blog": {
+        "title": "Blog",
+        "current": "Güncel",
+        "archived": "Arşiv",
+        "previous": "← Önceki",
+        "next": "Sonraki →",
+        "page": "Sayfa",
+        "loading": "Blog yazıları yükleniyor...",
+        "no_posts": "Blog yazısı bulunamadı. Daha sonra tekrar kontrol edin!",
+        "resources": "Kaynaklar"
+      },
+      "error_404": {
+        "title": "404",
+        "subtitle": ": Bulunamadı",
+        "cat_intro": "Teknisyen Kedi:",
+        "cat_message": "miyav miyav, miyav miyav miyav mriyav",
+        "return_home": "Ana Sayfaya Dön"
+      },
+      "footer": {
+        "made_with": "❤️ ve 💻 ile yapıldı"
+      },
+      "disclaimer": {
+        "text": "⚠️ Tüm içerik tamamen eğitim amaçlıdır. Hiçbir sorumluluk alınmaz."
+      },
+      "meta": {
+        "site_description": "Gray hat Yavuz'un kişisel web sitesi.",
+        "og_description": "Öğrenci",
+        "blog_description": "Yavuz'un en son blog yazıları ve düşünceleri.",
+        "blog_og_description": "En son blog yazıları",
+        "error_description": "Sayfa bulunamadı - Teknisyen kedi yardım etmek için burada!",
+        "error_og_description": "Sayfa bulunamadı, miyavvv"
+      }
+    },
+    "de": {
+      "navigation": {
+        "about_me": "Über mich",
+        "contact": "Kontakt",
+        "blogs": "Blog",
+        "toggle_menu": "Menü umschalten",
+        "toggle_dark_mode": "Dunklen Modus umschalten",
+        "back_to_top": "Nach oben"
+      },
+      "hero": {
+        "greeting": "Hallo, ich bin",
+        "name": "Yavuz",
+        "description": "— ein Gray Hat, der immer ein Auge auf Schwachstellen hat.",
+        "welcome": "Willkommen in meiner Ecke des Internets.",
+        "cta_about": "Über mich",
+        "cta_blogs": "Blog"
+      },
+      "about": {
+        "title": "Über mich",
+        "intro": "Ich bin Yavuz. Ich versuche oft, in anfällige Server einzudringen, die im Internet herumliegen. Ansonsten spiele ich gerade mit Python herum.",
+        "disclaimer": "Aber keine Sorge, ich werde dir die Schwachstellen mitteilen, wenn du mich lässt.",
+        "accounts": "Mein",
+        "codeberg_account": "Codeberg-Konto",
+        "github_account": "GitHub-Konto",
+        "hosting_thanks": "Dank an",
+        "github_pages": "GitHub Pages",
+        "hosting_text": "für das kostenlose Hosting dieser Website."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "message": "Sie können mich unter folgender Adresse erreichen:",
+        "follow_up": ". Ich werde mich melden, sobald ich Ihre Nachricht gelesen habe."
+      },
+      "blog": {
+        "title": "Blog",
+        "current": "Aktuell",
+        "archived": "Archiv",
+        "previous": "← Vorherige",
+        "next": "Nächste →",
+        "page": "Seite",
+        "loading": "Blog-Beiträge werden geladen...",
+        "no_posts": "Keine Blog-Beiträge gefunden. Schauen Sie später noch einmal vorbei!",
+        "resources": "Ressourcen"
+      },
+      "error_404": {
+        "title": "404",
+        "subtitle": ": Nicht gefunden",
+        "cat_intro": "Die Techniker-Katze:",
+        "cat_message": "miau miau, miau miau miau mriau",
+        "return_home": "Zur Startseite"
+      },
+      "footer": {
+        "made_with": "Gemacht mit ❤️ und 💻"
+      },
+      "disclaimer": {
+        "text": "⚠️ Alle Inhalte sind rein bildend. Keine Verantwortung übernommen."
+      },
+      "meta": {
+        "site_description": "Die persönliche Website von Gray Hat Yavuz.",
+        "og_description": "Student und Lernender",
+        "blog_description": "Neueste Blog-Beiträge und Gedanken von Yavuz.",
+        "blog_og_description": "Neueste Blog-Beiträge",
+        "error_description": "Seite nicht gefunden - Die Techniker-Katze ist hier, um zu helfen!",
+        "error_og_description": "Seite nicht gefunden, miauuu"
+      }
+    }
+  },
+  "element_mappings": {
+    "index.html": {
+      "title": "meta.site_description",
+      "meta[name='description']": "meta.site_description",
+      "meta[property='og:description']": "meta.og_description",
+      ".brand__text": "hero.name",
+      "nav a[href='#about']": "navigation.about_me",
+      "nav a[href='#contact']": "navigation.contact",
+      "nav a[href='/blogs']": "navigation.blogs",
+      ".nav__toggle .visually-hidden": "navigation.toggle_menu",
+      ".theme-toggle": "navigation.toggle_dark_mode",
+      "h1": "hero.greeting + hero.name + hero.description",
+      ".hero__content p": "hero.welcome",
+      ".hero__cta a:first-child": "hero.cta_about",
+      ".hero__cta a:last-child": "hero.cta_blogs",
+      "#about h2": "about.title",
+      "#about p:first-of-type": "about.intro",
+      "#about p:nth-of-type(2)": "about.disclaimer",
+      "#about p:nth-of-type(3)": "about.accounts + about.codeberg_account + about.github_account",
+      "#about p:last-of-type": "about.hosting_thanks + about.github_pages + about.hosting_text",
+      "#contact h2": "contact.title",
+      "#contact p": "contact.message + contact.follow_up",
+      ".copyright": "footer.made_with",
+      ".to-top": "navigation.back_to_top"
+    },
+    "blogs.html": {
+      "title": "blog.title",
+      "meta[name='description']": "meta.blog_description",
+      "meta[property='og:description']": "meta.blog_og_description",
+      ".brand__text": "hero.name",
+      "nav a[href='/#about']": "navigation.about_me",
+      "nav a[href='/#contact']": "navigation.contact",
+      "nav a[href='/blogs']": "navigation.blogs",
+      ".nav__toggle .visually-hidden": "navigation.toggle_menu",
+      ".theme-toggle": "navigation.toggle_dark_mode",
+      "h1 .accent-gradient": "blog.title",
+      "#category-latest": "blog.current",
+      "#category-archived": "blog.archived",
+      "#prev-page": "blog.previous",
+      "#next-page": "blog.next",
+      "#page-info": "blog.page",
+      ".loading": "blog.loading",
+      "#no-posts p": "blog.no_posts",
+      ".disclaimer-footer p": "disclaimer.text",
+      ".copyright": "footer.made_with",
+      ".to-top": "navigation.back_to_top"
+    },
+    "404.html": {
+      "title": "error_404.title",
+      "meta[name='description']": "meta.error_description",
+      "meta[property='og:description']": "meta.error_og_description",
+      ".brand__text": "hero.name",
+      "nav a[href='index.html#about']": "navigation.about_me",
+      "nav a[href='index.html#contact']": "navigation.contact",
+      "nav a[href='blogs.html']": "navigation.blogs",
+      ".nav__toggle .visually-hidden": "navigation.toggle_menu",
+      ".theme-toggle": "navigation.toggle_dark_mode",
+      "h1 .accent-gradient": "error_404.title",
+      "h1 span:last-child": "error_404.subtitle",
+      "#cat-message": "error_404.cat_message",
+      ".btn": "error_404.return_home",
+      ".copyright": "footer.made_with",
+      ".to-top": "navigation.back_to_top"
+    },
+    "script.js": {
+      "setupControls currentBtn.textContent": "blog.current",
+      "setupControls archivedBtn.textContent": "blog.archived",
+      "renderBlogList .loading": "blog.loading",
+      "showNoPosts": "blog.no_posts",
+      "showError": "blog.loading",
+      "generateLinkButtons h3": "blog.resources",
+      "updatePaginationControls pageInfo": "blog.page"
+    }
+  }
+}

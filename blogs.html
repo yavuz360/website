@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blogs</title>
+  <meta name="description" content="Latest blog posts and thoughts from Yavuz." />
+  <meta property="og:title" content="Blogs" />
+  <meta property="og:description" content="Latest blog posts" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="no-js">
+  <header class="site-header" id="top">
+    <div class="container header__inner">
+      <div class="header__left">
+        <a href="/" class="brand">
+          <img class="brand__logo" src="assets/favicon.svg" alt="" aria-hidden="true">
+          <span class="brand__text">Yavuz</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <button class="nav__toggle" aria-expanded="false" aria-controls="nav-list">
+            <span class="visually-hidden">Toggle Menu</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2zm16 5H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2zm0 7H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2z"/>
+            </svg>
+          </button>
+
+          <ul class="nav__list" id="nav-list">
+            <li><a href="/#about">About me</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Theme and Language buttons on the far right -->
+      <div class="header__controls">
+        <button class="language-toggle" id="language-toggle" aria-label="Change language">
+          <img class="flag-icon" id="current-flag" src="assets/gb.png" alt="English" width="18" height="18">
+        </button>
+        
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <!-- show in LIGHT -->
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.64 5.64L4.22 4.22m15.56 15.56-1.42-1.42M18.36 5.64l1.42-1.42M5.64 18.36 4.22 19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+          <!-- show in DARK -->
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- WHY ZERO TRUST -->
+    <section class="section">
+      <div class="container">
+        <div>
+          <h1><span class="accent-gradient">Blogs</span></h1>
+          
+          <!-- Blog Controls -->
+          <div class="blog-controls">
+            <div>
+              <button id="category-latest" class="category-btn active">Latest</button>
+              <button id="category-archived" class="category-btn">Archived</button>
+            </div>
+            <div class="page-controls">
+              <button id="prev-page" class="page-btn">← Previous</button>
+              <span id="page-info">Page 1</span>
+              <button id="next-page" class="page-btn">Next →</button>
+            </div>
+          </div>
+
+          <!-- Blog Posts Container -->
+          <div id="blog-posts" class="blog-posts">
+            <div class="loading">Loading blog posts...</div>
+          </div>
+          
+          <!-- No Posts Message -->
+          <div id="no-posts" class="no-posts" style="display: none;">
+            <p>No blog posts found. Check back later!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Disclaimer Footer -->
+  <div class="disclaimer-footer">
+    <div class="container">
+      <p>⚠️ All content is purely educational. No responsibility taken.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="brand brand--footer">
+        <img class="brand__logo" src="assets/favicon.svg" alt="" aria-hidden="true">
+        <span class="brand__text">Yavuz</span>
+      </div>
+      <p class="copyright">Made with ❤️ and 💻</p>
+      <a href="#top" class="to-top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
