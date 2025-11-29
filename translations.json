@@ -19,8 +19,8 @@
       },
       "about": {
         "title": "About",
-        "intro": "I'm Yavuz. I often try my way into vulnerable servers left around over the internet. Other than that I'm currently playing around with python.",
-        "disclaimer": "But don't worry, I'll let you know the vulnerabilities, if you let me.",
+        "intro": "I'm Yavuz. I often check servers left forgotten around over the internet. Other than that I'm currently playing around with python.",
+        "disclaimer": "I'll let you know the vulnerabilities, if I can.",
         "accounts": "My",
         "codeberg_account": "codeberg account",
         "github_account": "github account",
@@ -58,9 +58,9 @@
         "text": "⚠️ All content is purely educational. No responsibility taken."
       },
       "meta": {
-        "site_description": "The personal website of gray hat Yavuz.",
-        "og_description": "Student learner",
-        "blog_description": "Latest blog posts and thoughts from Yavuz.",
+        "site_description": "Yavuz",
+        "og_description": "Learner",
+        "blog_description": "Latest blog posts",
         "blog_og_description": "Latest blog posts",
         "error_description": "Page not found - The technician cat is here to help!",
         "error_og_description": "Page not found, meowww"
@@ -78,15 +78,15 @@
       "hero": {
         "greeting": "Merhaba, ben",
         "name": "Yavuz",
-        "description": "— güvenlik açıklarını her zaman takip eden bir gray hat.",
+        "description": "— unutulmuş sunucuları her zaman takip ederim",
         "welcome": "İnternetteki köşeme hoş geldiniz.",
         "cta_about": "Hakkımda",
         "cta_blogs": "Blog"
       },
       "about": {
         "title": "Hakkımda",
-        "intro": "Ben Yavuz. İnternette bırakılmış güvenlik açığı olan sunuculara girmeye çalışırım. Bunun dışında şu anda Python ile uğraşıyorum.",
-        "disclaimer": "Ama merak etme, izin verirsen güvenlik açıklarını sana bildiririm.",
+        "intro": "Ben Yavuz. İnternette unutulmuş sunucuları bulmaya çalışırım. Bunun dışında şu anda Python ile uğraşıyorum.",
+        "disclaimer": "Bildirecek bir yol bulursam bu sunucuları bildiririm",
         "accounts": "Benim",
         "codeberg_account": "codeberg hesabım",
         "github_account": "github hesabım",
@@ -124,9 +124,9 @@
         "text": "⚠️ Tüm içerik tamamen eğitim amaçlıdır. Hiçbir sorumluluk alınmaz."
       },
       "meta": {
-        "site_description": "Gray hat Yavuz'un kişisel web sitesi.",
+        "site_description": "Yavuz",
         "og_description": "Öğrenci",
-        "blog_description": "Yavuz'un en son blog yazıları ve düşünceleri.",
+        "blog_description": "Blog yazıları",
         "blog_og_description": "En son blog yazıları",
         "error_description": "Sayfa bulunamadı - Teknisyen kedi yardım etmek için burada!",
         "error_og_description": "Sayfa bulunamadı, miyavvv"
@@ -144,15 +144,15 @@
       "hero": {
         "greeting": "Hallo, ich bin",
         "name": "Yavuz",
-        "description": "— ein Gray Hat, der immer ein Auge auf Schwachstellen hat.",
+        "description": "— ständig auf der Suche nach vergessenen Servern.",
         "welcome": "Willkommen in meiner Ecke des Internets.",
         "cta_about": "Über mich",
         "cta_blogs": "Blog"
       },
       "about": {
         "title": "Über mich",
-        "intro": "Ich bin Yavuz. Ich versuche oft, in anfällige Server einzudringen, die im Internet herumliegen. Ansonsten spiele ich gerade mit Python herum.",
-        "disclaimer": "Aber keine Sorge, ich werde dir die Schwachstellen mitteilen, wenn du mich lässt.",
+        "intro": "Ich bin Yavuz. Ich versuche, vergessene Server im Internet zu finden. Außerdem beschäftige ich mich derzeit mit Python.",
+        "disclaimer": "Ich werde dir die Schwachstellen mitteilen, wenn ich einen Weg finde.",
         "accounts": "Mein",
         "codeberg_account": "Codeberg-Konto",
         "github_account": "GitHub-Konto",
@@ -190,9 +190,9 @@
         "text": "⚠️ Alle Inhalte sind rein bildend. Keine Verantwortung übernommen."
       },
       "meta": {
-        "site_description": "Die persönliche Website von Gray Hat Yavuz.",
-        "og_description": "Student und Lernender",
-        "blog_description": "Neueste Blog-Beiträge und Gedanken von Yavuz.",
+        "site_description": "Yavuz",
+        "og_description": "Student",
+        "blog_description": "Blog-Beiträge",
         "blog_og_description": "Neueste Blog-Beiträge",
         "error_description": "Seite nicht gefunden - Die Techniker-Katze ist hier, um zu helfen!",
         "error_og_description": "Seite nicht gefunden, miauuu"
