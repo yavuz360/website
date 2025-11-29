@@ -1,5 +1,9 @@
-// Progressive enhancement indicator
-document.body.classList.remove('no-js');
+// Progressive enhancement indicator + shared paths
+const body = document.body;
+body?.classList.remove('no-js');
+const assetRoot = body?.dataset.assetRoot || 'assets/';
+const translationsPath = body?.dataset.translations || './translations.json';
+const entriesPath = body?.dataset.entries || './entries.txt';
 
 /* ===== Mobile nav toggle ===== */
 const navToggle = document.querySelector('.nav__toggle');
@@ -37,7 +41,7 @@ const setThemeColorMeta = (hex) => {
 const applyTheme = (mode) => {
   root.setAttribute('data-theme', mode);
   localStorage.setItem('theme', mode);
-  setThemeColorMeta(mode === 'dark' ? '#0c0d12' : '#ffffff');
+  setThemeColorMeta(mode === 'dark' ? '#05070e' : '#fef8f1');
 };
 
 themeToggle?.addEventListener('click', () => {
@@ -52,6 +56,148 @@ toTop?.addEventListener('click', (e) => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+/* ===== Tree jingle + festive rain interaction ===== */
+const treeContainer = document.querySelector('.hero__image');
+const treeImage = treeContainer?.querySelector('img');
+const ensureRainField = () => {
+  let field = document.querySelector('.rain-field');
+  if (!field) {
+    field = document.createElement('div');
+    field.className = 'rain-field';
+    field.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(field);
+  }
+  return field;
+};
+const rainField = treeContainer ? ensureRainField() : document.querySelector('.rain-field');
+
+const rainfallController = (() => {
+  if (!rainField) return null;
+  const assets = Array.from({ length: 6 }, (_, idx) => `${assetRoot}rain${idx + 1}.svg`);
+  const timers = new Set();
+  let slowInterval = null;
+  let fastInterval = null;
+  let activeDrops = 0;
+
+  const clearTimer = (timer) => {
+    if (!timer) return;
+    clearTimeout(timer);
+    clearInterval(timer);
+  };
+
+  const cleanupTimers = () => {
+    timers.forEach((timer) => clearTimer(timer));
+    timers.clear();
+  };
+
+  const removeDrop = (drop) => {
+    drop.remove();
+    activeDrops = Math.max(0, activeDrops - 1);
+  };
+
+  const createDrop = () => {
+    if (!rainField || activeDrops >= 10) return;
+    const drop = document.createElement('span');
+    drop.className = 'rain-drop';
+    drop.style.setProperty('--x', `${Math.random() * 100}%`);
+    drop.style.setProperty('--duration', '5.5s');
+
+    const img = document.createElement('img');
+    img.src = assets[Math.floor(Math.random() * assets.length)];
+    img.alt = '';
+    drop.appendChild(img);
+
+    activeDrops += 1;
+    drop.addEventListener('animationend', () => removeDrop(drop), { once: true });
+    rainField.appendChild(drop);
+  };
+
+  const stop = () => {
+    if (slowInterval) {
+      clearInterval(slowInterval);
+      slowInterval = null;
+    }
+    if (fastInterval) {
+      clearInterval(fastInterval);
+      fastInterval = null;
+    }
+    cleanupTimers();
+  };
+
+  const start = (durationMs = 6000) => {
+    if (!rainField) return;
+    stop();
+
+    createDrop();
+    slowInterval = setInterval(createDrop, 900);
+    const transition = setTimeout(() => {
+      if (slowInterval) {
+        clearInterval(slowInterval);
+        slowInterval = null;
+      }
+      fastInterval = setInterval(createDrop, 350);
+    }, 1800);
+    timers.add(transition);
+
+    const fadeOutDelay = Math.max(0, durationMs - 1200);
+    const fadeTimer = setTimeout(() => {
+      if (fastInterval) {
+        clearInterval(fastInterval);
+        fastInterval = null;
+      }
+      if (slowInterval) {
+        clearInterval(slowInterval);
+        slowInterval = null;
+      }
+    }, fadeOutDelay);
+    timers.add(fadeTimer);
+  };
+
+  return { start, stop };
+})();
+
+if (treeContainer && treeImage) {
+  const treeAudio = new Audio(`${assetRoot}jingle.mp3`);
+  let treeIsPlaying = false;
+  let cachedDuration = 0;
+
+  treeAudio.addEventListener('loadedmetadata', () => {
+    if (!Number.isNaN(treeAudio.duration)) {
+      cachedDuration = treeAudio.duration * 1000;
+    }
+  });
+
+  const resetTree = () => {
+    treeImage.classList.remove('tree--jiggle');
+    treeIsPlaying = false;
+    rainfallController?.stop();
+  };
+
+  treeAudio.addEventListener('ended', resetTree);
+  treeAudio.addEventListener('error', resetTree);
+
+  const triggerTree = () => {
+    if (treeIsPlaying) return;
+    treeIsPlaying = true;
+    treeImage.classList.add('tree--jiggle');
+    treeAudio.currentTime = 0;
+    const durationMs = cachedDuration || (treeAudio.duration ? treeAudio.duration * 1000 : 6500);
+    rainfallController?.start(durationMs);
+    const playPromise = treeAudio.play();
+    if (playPromise instanceof Promise) {
+      playPromise.catch(() => resetTree());
+    }
+  };
+
+  treeContainer.addEventListener('click', triggerTree);
+  treeContainer.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      triggerTree();
+    }
+  });
+}
 
 /* ===== Enlightenment Popup ===== */
 const showEnlightenmentPopup = () => {
@@ -74,7 +220,7 @@ const showEnlightenmentPopup = () => {
     </div>
   `;
 
-  document.body.appendChild(overlay);
+  body?.appendChild(overlay);
 
   // Show popup with animation
   requestAnimationFrame(() => {
@@ -85,7 +231,7 @@ const showEnlightenmentPopup = () => {
   const closePopup = () => {
     overlay.classList.remove('visible');
     setTimeout(() => {
-      document.body.removeChild(overlay);
+      overlay.remove();
     }, 300);
     localStorage.setItem('enlightenment-accepted', 'true');
   };
@@ -110,7 +256,7 @@ if (document.readyState === 'loading') {
 class BlogSystem {
   constructor() {
     // Configuration - local file path
-    this.entriesFile = './entries.txt';
+    this.entriesFile = entriesPath;
     this.currentPage = 1;
     this.postsPerPage = 3;
     this.currentCategory = 'current'; // 'current' or 'archived'
@@ -555,7 +701,7 @@ class BlogSystem {
       </div>
     `;
 
-    document.body.appendChild(overlay);
+  body?.appendChild(overlay);
 
     // Show popup with animation
     requestAnimationFrame(() => {
@@ -565,9 +711,9 @@ class BlogSystem {
     // Setup close handlers
     const closePopup = () => {
       overlay.classList.remove('visible');
-      setTimeout(() => {
-        document.body.removeChild(overlay);
-      }, 300);
+    setTimeout(() => {
+      overlay.remove();
+    }, 300);
     };
 
     overlay.querySelector('.popup-close').addEventListener('click', closePopup);
@@ -620,6 +766,7 @@ class TranslationSystem {
     };
     
     this.init();
+    window.translationSystem = this;
   }
 
   async init() {
@@ -631,7 +778,7 @@ class TranslationSystem {
 
   async loadTranslations() {
     try {
-      const response = await fetch('./translations.json');
+      const response = await fetch(translationsPath);
       const data = await response.json();
       this.translations = data.website_translations;
       console.log('Translations loaded:', Object.keys(this.translations));
@@ -665,9 +812,13 @@ class TranslationSystem {
     const flagIcon = document.getElementById('current-flag');
     if (flagIcon && this.languages[this.currentLanguage]) {
       const lang = this.languages[this.currentLanguage];
-      flagIcon.src = `assets/${lang.flag}`;
+      flagIcon.src = `${assetRoot}${lang.flag}`;
       flagIcon.alt = lang.name;
     }
+  }
+
+  getSection(section) {
+    return this.translations[this.currentLanguage]?.[section];
   }
 
   translatePage() {
@@ -792,6 +943,9 @@ class TranslationSystem {
     this.updateText('.disclaimer-footer p', t.disclaimer?.text);
 
     console.log(`Page translated to: ${this.currentLanguage}`);
+    document.dispatchEvent(new CustomEvent('site-language-change', {
+      detail: { language: this.currentLanguage }
+    }));
   }
 
   getCurrentPage() {
@@ -818,8 +972,95 @@ class TranslationSystem {
   }
 }
 
-// Initialize blog system and translation system
+/* ===== New Year Countdown ===== */
+class NewYearCountdown {
+  constructor() {
+    this.container = document.getElementById('countdown-wrapper');
+    if (!this.container) return;
+    this.valueEl = document.getElementById('countdown-value');
+    this.preEl = document.getElementById('countdown-pretext');
+    this.postEl = document.getElementById('countdown-posttext');
+    this.targetMs = Number(body?.dataset.newyearTarget) || null;
+    this.startMs = Number(body?.dataset.newyearStart) || null;
+    this.placeholder = '30d 23h 59m 59s';
+    this.state = 'inactive';
+    this.interval = null;
+    this.init();
+  }
+
+  init() {
+    this.applyTexts();
+    this.tick();
+    this.interval = setInterval(() => this.tick(), 1000);
+    document.addEventListener('site-language-change', () => this.applyTexts());
+  }
+
+  getStrings() {
+    const defaults = {
+      pre: '',
+      post: 'Until 2026',
+      celebration: 'We made it to 2026 🥳'
+    };
+    const translation = window.translationSystem?.getSection?.('newyear');
+    return { ...defaults, ...(translation || {}) };
+  }
+
+  applyTexts() {
+    if (!this.preEl || !this.postEl) return;
+    const strings = this.getStrings();
+    if (this.state === 'done') {
+      this.preEl.textContent = strings.celebration;
+      this.postEl.textContent = '';
+    } else {
+      this.preEl.textContent = strings.pre;
+      this.postEl.textContent = strings.post;
+    }
+  }
+
+  formatDiff(ms) {
+    const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  tick() {
+    if (!this.valueEl || !this.targetMs) return;
+    const now = Date.now();
+    if (this.startMs && now < this.startMs) {
+      this.state = 'inactive';
+      this.valueEl.textContent = this.placeholder;
+      this.container.classList.add('countdown--inactive');
+      this.container.classList.remove('countdown--celebration');
+      this.applyTexts();
+      return;
+    }
+
+    const diff = Math.max(0, this.targetMs - now);
+    this.valueEl.textContent = this.formatDiff(diff);
+    this.container.classList.remove('countdown--inactive');
+
+    if (diff === 0) {
+      this.state = 'done';
+      this.container.classList.add('countdown--celebration');
+      if (this.interval) {
+        clearInterval(this.interval);
+        this.interval = null;
+      }
+    } else {
+      this.state = 'running';
+      this.container.classList.remove('countdown--celebration');
+    }
+
+    this.applyTexts();
+  }
+}
+
+// Initialize app systems
 document.addEventListener('DOMContentLoaded', () => {
-  new BlogSystem();
   new TranslationSystem();
+  new BlogSystem();
+  new NewYearCountdown();
 });

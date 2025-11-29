@@ -43,14 +43,16 @@
   <meta property="og:title" content="Yavuz" />
   <meta property="og:description" content="Student learner" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#2563eb" />
+  <meta name="theme-color" content="#b91c1c" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="no-js">
+<body class="no-js" data-asset-root="assets/" data-translations="translations.json" data-entries="entries.txt">
+  <div class="snowfall" aria-hidden="true"></div>
+  <div class="rain-field" aria-hidden="true"></div>
   <header class="site-header" id="top">
     <div class="container header__inner">
       <div class="header__left">
@@ -103,14 +105,34 @@
         <div class="blob"></div>
         <div class="blob blob--2"></div>
       </div>
+      <div class="hero__lights" aria-hidden="true">
+        <span class="hero__light"></span>
+        <span class="hero__light"></span>
+        <span class="hero__light"></span>
+        <span class="hero__light"></span>
+        <span class="hero__light"></span>
+        <span class="hero__light"></span>
+        <span class="hero__light"></span>
+      </div>
       <div class="container hero__content">
         <div class="hero__text hero__text--centered">
           <h1>Hi, I’m <span class="accent-gradient">Yavuz</span> — a gray hat who always has an eye on vulnerabilities.</h1>
-          <p>Welcome to my corner of the internet.</p>
+          <p class="hero__subtitle">Welcome to my corner of the internet.</p>
+          <ul class="hero__highlights" aria-label="Festive focus areas">
+            <li>
+              <a class="hero__welcome-btn" href="/newyear/">
+                <span aria-hidden="true">🎄</span>
+                <span>Welcome 2026</span>
+              </a>
+            </li>
+          </ul>
           <div class="hero__cta">
-            <a class="btn" href="#about">About me</a>
+            <a class="btn btn--plain" href="#about">About me</a>
             <a class="btn btn--ghost" href="/blogs">Blogs</a>
           </div>
+        </div>
+        <div class="hero__image" role="button" aria-label="Play festive jingle" tabindex="0">
+          <img src="assets/tree.svg" alt="Festive tree illustration">
         </div>
       </div>
     </section>

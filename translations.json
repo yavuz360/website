@@ -57,6 +57,11 @@
       "disclaimer": {
         "text": "⚠️ All content is purely educational. No responsibility taken."
       },
+      "newyear": {
+        "pre": "",
+        "post": "Until 2026",
+        "celebration": "We made it to 2026 🥳"
+      },
       "meta": {
         "site_description": "Yavuz",
         "og_description": "Learner",
@@ -123,6 +128,11 @@
       "disclaimer": {
         "text": "⚠️ Tüm içerik tamamen eğitim amaçlıdır. Hiçbir sorumluluk alınmaz."
       },
+      "newyear": {
+        "pre": "2026'ya",
+        "post": "kaldı",
+        "celebration": "2026'ya girdik 🥳"
+      },
       "meta": {
         "site_description": "Yavuz",
         "og_description": "Öğrenci",
@@ -188,6 +198,11 @@
       },
       "disclaimer": {
         "text": "⚠️ Alle Inhalte sind rein bildend. Keine Verantwortung übernommen."
+      },
+      "newyear": {
+        "pre": "",
+        "post": "Bis 2026",
+        "celebration": "Wir sind in 2026 angekommen 🥳"
       },
       "meta": {
         "site_description": "Yavuz",
