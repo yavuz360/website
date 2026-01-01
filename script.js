@@ -53,59 +53,6 @@ toTop?.addEventListener('click', (e) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-/* ===== Enlightenment Popup ===== */
-const showEnlightenmentPopup = () => {
-  const hasVisited = localStorage.getItem('enlightenment-accepted');
-  if (hasVisited) return;
-
-  // Create popup HTML
-  const overlay = document.createElement('div');
-  overlay.className = 'enlightenment-overlay';
-  overlay.innerHTML = `
-    <div class="enlightenment-popup">
-      <button class="enlightenment-close" aria-label="Close">&times;</button>
-      <h2 class="enlightenment-title">Enlightenment</h2>
-      <div class="enlightenment-content">
-        By visiting and browsing this website you accept that any information/tool/thought listed on this website is purely educational. No responsibility is taken.
-      </div>
-      <div class="enlightenment-actions">
-        <button class="enlightenment-affirm">Affirm</button>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  // Show popup with animation
-  requestAnimationFrame(() => {
-    overlay.classList.add('visible');
-  });
-
-  // Setup close handlers
-  const closePopup = () => {
-    overlay.classList.remove('visible');
-    setTimeout(() => {
-      document.body.removeChild(overlay);
-    }, 300);
-    localStorage.setItem('enlightenment-accepted', 'true');
-  };
-
-  overlay.querySelector('.enlightenment-close').addEventListener('click', closePopup);
-  overlay.querySelector('.enlightenment-affirm').addEventListener('click', closePopup);
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      closePopup();
-    }
-  });
-};
-
-// Show popup when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', showEnlightenmentPopup);
-} else {
-  showEnlightenmentPopup();
-}
-
 /* ===== Blog System ===== */
 class BlogSystem {
   constructor() {
@@ -611,7 +558,8 @@ class BlogSystem {
 /* ===== Translation System ===== */
 class TranslationSystem {
   constructor() {
-    this.currentLanguage = localStorage.getItem('website-language') || 'en';
+    this.defaultLanguage = 'en';
+    this.currentLanguage = this.defaultLanguage;
     this.translations = {};
     this.languages = {
       'en': { flag: 'gb.png', name: 'English' },
@@ -625,8 +573,12 @@ class TranslationSystem {
   async init() {
     await this.loadTranslations();
     this.setupLanguageToggle();
+    const detectedLanguage = this.detectLanguageFromBrowser();
+    const initialLanguage = detectedLanguage || this.getStoredLanguage() || this.defaultLanguage;
+    this.setLanguage(initialLanguage);
     this.updateFlag();
     this.translatePage();
+    this.showDisclaimerPopup();
   }
 
   async loadTranslations() {
@@ -654,11 +606,40 @@ class TranslationSystem {
     const currentIndex = languages.indexOf(this.currentLanguage);
     const nextIndex = (currentIndex + 1) % languages.length;
     
-    this.currentLanguage = languages[nextIndex];
-    localStorage.setItem('website-language', this.currentLanguage);
+    this.setLanguage(languages[nextIndex]);
     
     this.updateFlag();
     this.translatePage();
+  }
+
+  getStoredLanguage() {
+    const stored = localStorage.getItem('website-language');
+    return stored && this.languages[stored] ? stored : null;
+  }
+
+  setLanguage(language) {
+    const normalized = this.languages[language] ? language : this.defaultLanguage;
+    this.currentLanguage = normalized;
+    localStorage.setItem('website-language', normalized);
+  }
+
+  detectLanguageFromBrowser() {
+    const candidates = Array.isArray(navigator.languages) && navigator.languages.length
+      ? navigator.languages
+      : [navigator.language];
+
+    for (const candidate of candidates) {
+      const normalized = this.normalizeLanguage(candidate);
+      if (normalized && this.languages[normalized]) {
+        return normalized;
+      }
+    }
+    return null;
+  }
+
+  normalizeLanguage(language) {
+    if (!language) return null;
+    return language.toLowerCase().split('-')[0];
   }
 
   updateFlag() {
@@ -677,6 +658,7 @@ class TranslationSystem {
     }
 
     const t = this.translations[this.currentLanguage];
+    document.documentElement.setAttribute('lang', this.currentLanguage);
     
     // Update page title
     if (t.meta) {
@@ -692,7 +674,6 @@ class TranslationSystem {
 
     // Navigation
     this.updateText('nav a[href*="about"]', t.navigation?.about_me);
-    this.updateText('nav a[href*="contact"]', t.navigation?.contact);
     this.updateText('nav a[href*="blogs"]', t.navigation?.blogs);
     this.updateAttribute('.nav__toggle .visually-hidden', 'textContent', t.navigation?.toggle_menu);
     this.updateAttribute('.theme-toggle', 'aria-label', t.navigation?.toggle_dark_mode);
@@ -701,13 +682,9 @@ class TranslationSystem {
     // Hero section (index page only)
     const currentPage = this.getCurrentPage();
     if (currentPage === 'index') {
-      const heroH1 = document.querySelector('.hero h1');
-      if (heroH1 && t.hero) {
-        const nameSpan = heroH1.querySelector('.accent-gradient');
-        if (nameSpan) {
-          heroH1.innerHTML = `${t.hero.greeting || 'Hi, I\'m'} <span class="accent-gradient">${t.hero.name || 'Yavuz'}</span> ${t.hero.description || '— a gray hat who always has an eye on vulnerabilities.'}`;
-        }
-      }
+      this.updateText('.hero-greeting', t.hero?.greeting);
+      this.updateText('.hero-name', t.hero?.name);
+      this.updateText('.hero-description', t.hero?.description);
     }
     this.updateText('.hero__content p', t.hero?.welcome);
     this.updateText('.hero__cta a:first-child', t.hero?.cta_about);
@@ -735,16 +712,6 @@ class TranslationSystem {
         if (githubPagesLink) {
           aboutPs[3].innerHTML = `${t.about.hosting_thanks} <a href="${githubPagesLink.href}" target="_blank" rel="noopener">${t.about.github_pages}</a> ${t.about.hosting_text}`;
         }
-      }
-    }
-
-    // Contact section
-    this.updateText('#contact h2', t.contact?.title);
-    const contactP = document.querySelector('#contact p');
-    if (contactP && t.contact) {
-      const emailLink = contactP.querySelector('a[href^="mailto:"]');
-      if (emailLink) {
-        contactP.innerHTML = `${t.contact.message} <a href="${emailLink.href}">${emailLink.textContent}</a>${t.contact.follow_up}`;
       }
     }
 
@@ -790,8 +757,66 @@ class TranslationSystem {
 
     // Disclaimer
     this.updateText('.disclaimer-footer p', t.disclaimer?.text);
+    this.updateDisclaimerPopup(t);
 
     console.log(`Page translated to: ${this.currentLanguage}`);
+  }
+
+  showDisclaimerPopup() {
+    if (localStorage.getItem('disclaimer-accepted')) return;
+    if (document.getElementById('disclaimer-overlay')) return;
+
+    const t = this.translations[this.currentLanguage];
+    if (!t?.disclaimer_popup) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'disclaimer-overlay';
+    overlay.id = 'disclaimer-overlay';
+    overlay.innerHTML = `
+      <div class="disclaimer-popup" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+        <button class="disclaimer-close" aria-label="Close">&times;</button>
+        <h2 class="disclaimer-title" id="disclaimer-title">${t.disclaimer_popup.title}</h2>
+        <div class="disclaimer-content" id="disclaimer-text">${t.disclaimer_popup.text}</div>
+        <div class="disclaimer-actions">
+          <button class="disclaimer-accept" id="disclaimer-accept">${t.disclaimer_popup.accept}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    requestAnimationFrame(() => {
+      overlay.classList.add('visible');
+    });
+
+    const closePopup = () => {
+      overlay.classList.remove('visible');
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+      }, 300);
+      localStorage.setItem('disclaimer-accepted', 'true');
+    };
+
+    overlay.querySelector('.disclaimer-close').addEventListener('click', closePopup);
+    overlay.querySelector('.disclaimer-accept').addEventListener('click', closePopup);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closePopup();
+      }
+    });
+  }
+
+  updateDisclaimerPopup(t) {
+    const overlay = document.getElementById('disclaimer-overlay');
+    if (!overlay || !t?.disclaimer_popup) return;
+
+    const title = overlay.querySelector('#disclaimer-title');
+    const text = overlay.querySelector('#disclaimer-text');
+    const accept = overlay.querySelector('#disclaimer-accept');
+
+    if (title) title.textContent = t.disclaimer_popup.title;
+    if (text) text.textContent = t.disclaimer_popup.text;
+    if (accept) accept.textContent = t.disclaimer_popup.accept;
   }
 
   getCurrentPage() {
@@ -818,8 +843,120 @@ class TranslationSystem {
   }
 }
 
+/* ===== Radio Music System ===== */
+class RadioMusicSystem {
+  constructor() {
+    this.toggleButton = document.getElementById('radio-toggle');
+    if (!this.toggleButton) return;
+
+    this.music = new Audio('assets/lobbymusic.mp3');
+    this.music.loop = true;
+    this.music.volume = 0.45;
+
+    this.clickSound = new Audio('assets/click.mp3');
+    this.clickSound.volume = 0.7;
+
+    this.shockSound = new Audio('assets/shock.mp3');
+    this.shockSound.volume = 0.35;
+
+    this.isLocked = false;
+    this.isPlaying = false;
+    this.clickCount = 0;
+    this.clickWindowMs = 600;
+    this.clickTimer = null;
+
+    this.toggleButton.addEventListener('click', () => this.handleClick());
+    this.tryAutoplay();
+  }
+
+  async tryAutoplay() {
+    try {
+      await this.music.play();
+      this.isPlaying = true;
+    } catch (error) {
+      this.isPlaying = false;
+    }
+    this.updateUi();
+  }
+
+  handleClick() {
+    if (this.isLocked) return;
+
+    this.playSound(this.clickSound);
+    this.clickCount += 1;
+
+    if (this.clickCount === 1) {
+      this.clickTimer = window.setTimeout(() => {
+        this.clickTimer = null;
+        this.handleToggle();
+      }, this.clickWindowMs);
+    }
+
+    if (this.clickCount >= 3) {
+      if (this.clickTimer) {
+        clearTimeout(this.clickTimer);
+        this.clickTimer = null;
+      }
+      this.triggerShock();
+    }
+  }
+
+  async handleToggle() {
+    if (this.clickCount >= 3 || this.isLocked) {
+      this.resetClickState();
+      return;
+    }
+
+    if (this.isPlaying) {
+      this.music.pause();
+      this.isPlaying = false;
+    } else {
+      try {
+        await this.music.play();
+        this.isPlaying = true;
+      } catch (error) {
+        this.isPlaying = false;
+      }
+    }
+
+    this.updateUi();
+    this.resetClickState();
+  }
+
+  triggerShock() {
+    this.isLocked = true;
+    this.music.pause();
+    this.music.currentTime = 0;
+    this.isPlaying = false;
+    this.toggleButton.classList.remove('is-playing');
+    this.toggleButton.classList.add('is-shocked');
+    this.playSound(this.shockSound);
+    this.resetClickState();
+  }
+
+  playSound(sound) {
+    if (!sound) return;
+    try {
+      sound.currentTime = 0;
+      sound.play().catch(() => {});
+    } catch (error) {
+      // Ignore playback errors
+    }
+  }
+
+  updateUi() {
+    if (!this.toggleButton) return;
+    this.toggleButton.classList.toggle('is-playing', this.isPlaying);
+  }
+
+  resetClickState() {
+    this.clickCount = 0;
+  }
+}
+
 // Initialize blog system and translation system
 document.addEventListener('DOMContentLoaded', () => {
   new BlogSystem();
   new TranslationSystem();
+  new RadioMusicSystem();
 });

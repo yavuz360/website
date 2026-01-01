@@ -3,7 +3,6 @@
     "en": {
       "navigation": {
         "about_me": "About me",
-        "contact": "Contact",
         "blogs": "Blogs",
         "toggle_menu": "Toggle Menu",
         "toggle_dark_mode": "Toggle dark mode",
@@ -27,11 +26,6 @@
         "hosting_thanks": "Thanks to",
         "github_pages": "GitHub Pages",
         "hosting_text": "for hosting this website, for free."
-      },
-      "contact": {
-        "title": "Contact",
-        "message": "You can reach me at",
-        "follow_up": ". I will get in touch once I read your message."
       },
       "blog": {
         "title": "Blogs",
@@ -57,6 +51,11 @@
       "disclaimer": {
         "text": "⚠️ All content is purely educational. No responsibility taken."
       },
+      "disclaimer_popup": {
+        "title": "Disclaimer",
+        "text": "All information and resources provided on this website are intended solely for educational purposes. The website is not responsible for any misuse or harmful actions taken based on the content. To enhance your browsing experience, certain data may be collected from or stored on your browser. Your selected language and display preferences are stored locally, and the website language may be determined automatically based on your browser settings. Disabling Javascript may result in loss of functionality. All resources are presented transparently. By visiting this website, you acknowledge and agree to these terms.",
+        "accept": "I Understand"
+      },
       "meta": {
         "site_description": "Yavuz",
         "og_description": "Learner",
@@ -69,7 +68,6 @@
     "tr": {
       "navigation": {
         "about_me": "Hakkımda",
-        "contact": "İletişim",
         "blogs": "Blog",
         "toggle_menu": "Menüyü Aç/Kapat",
         "toggle_dark_mode": "Karanlık modu aç/kapat",
@@ -93,11 +91,6 @@
         "hosting_thanks": "Bu web sitesini ücretsiz sunduğu için",
         "github_pages": "GitHub Pages",
         "hosting_text": "'e teşekkürler."
-      },
-      "contact": {
-        "title": "İletişim",
-        "message": "Bana şu adresten ulaşabilirsiniz:",
-        "follow_up": ". Mesajınızı okuduktan sonra size geri döneceğim."
       },
       "blog": {
         "title": "Blog",
@@ -123,6 +116,11 @@
       "disclaimer": {
         "text": "⚠️ Tüm içerik tamamen eğitim amaçlıdır. Hiçbir sorumluluk alınmaz."
       },
+      "disclaimer_popup": {
+        "title": "Uyarı",
+        "text": "Bu web sitesindeki tüm bilgiler ve kaynaklar yalnızca eğitim amaçlı sunulmaktadır. Herhangi bir zararlı kullanım veya amaç dışı kullanım sonucu oluşabilecek durumlardan site sorumlu değildir. Kullanıcı deneyiminizi geliştirmek amacıyla tarayıcınızdan bazı veriler alınabilir veya tarayıcınızda saklanabilir. Seçtiğiniz dil ve görünüm teması tarayıcınızda saklanır; ayrıca web sitesi dili tarayıcı dilinize bağlı olarak otomatik belirlenebilir. Javascript devre dışı bırakıldığında sitenin bazı işlevleri kullanılamayacaktır. Tüm kaynaklar şeffaf bir şekilde paylaşılmaktadır. Bu siteyi ziyaret ederek bu koşulları anladığınızı ve kabul ettiğinizi beyan etmiş olursunuz.",
+        "accept": "Anladım"
+      },
       "meta": {
         "site_description": "Yavuz",
         "og_description": "Öğrenci",
@@ -135,7 +133,6 @@
     "de": {
       "navigation": {
         "about_me": "Über mich",
-        "contact": "Kontakt",
         "blogs": "Blog",
         "toggle_menu": "Menü umschalten",
         "toggle_dark_mode": "Dunklen Modus umschalten",
@@ -159,11 +156,6 @@
         "hosting_thanks": "Dank an",
         "github_pages": "GitHub Pages",
         "hosting_text": "für das kostenlose Hosting dieser Website."
-      },
-      "contact": {
-        "title": "Kontakt",
-        "message": "Sie können mich unter folgender Adresse erreichen:",
-        "follow_up": ". Ich werde mich melden, sobald ich Ihre Nachricht gelesen habe."
       },
       "blog": {
         "title": "Blog",
@@ -189,6 +181,11 @@
       "disclaimer": {
         "text": "⚠️ Alle Inhalte sind rein bildend. Keine Verantwortung übernommen."
       },
+      "disclaimer_popup": {
+        "title": "Achtung",
+        "text": "Alle auf dieser Website bereitgestellten Informationen und Ressourcen dienen ausschließlich Bildungszwecken. Die Website übernimmt keine Verantwortung für Missbrauch oder Schäden, die durch eine zweckentfremdete Nutzung entstehen können. Zur Verbesserung Ihres Nutzererlebnisses können bestimmte Daten aus Ihrem Browser erfasst oder in diesem gespeichert werden. Ihre gewählte Sprache sowie das Erscheinungsthema werden lokal gespeichert; zudem kann die Sprache der Website automatisch anhand Ihrer Browsereinstellungen festgelegt werden. Wenn Javascript deaktiviert ist, stehen einige Funktionen der Website möglicherweise nicht zur Verfügung. Alle Ressourcen werden transparent bereitgestellt. Mit dem Besuch dieser Website bestätigen Sie, dass Sie diese Bedingungen verstanden haben und ihnen zustimmen.",
+        "accept": "Ich verstehe"
+      },
       "meta": {
         "site_description": "Yavuz",
         "og_description": "Student",
@@ -206,11 +203,12 @@
       "meta[property='og:description']": "meta.og_description",
       ".brand__text": "hero.name",
       "nav a[href='#about']": "navigation.about_me",
-      "nav a[href='#contact']": "navigation.contact",
       "nav a[href='/blogs']": "navigation.blogs",
       ".nav__toggle .visually-hidden": "navigation.toggle_menu",
       ".theme-toggle": "navigation.toggle_dark_mode",
-      "h1": "hero.greeting + hero.name + hero.description",
+      ".hero-greeting": "hero.greeting",
+      ".hero-name": "hero.name",
+      ".hero-description": "hero.description",
       ".hero__content p": "hero.welcome",
       ".hero__cta a:first-child": "hero.cta_about",
       ".hero__cta a:last-child": "hero.cta_blogs",
@@ -219,8 +217,6 @@
       "#about p:nth-of-type(2)": "about.disclaimer",
       "#about p:nth-of-type(3)": "about.accounts + about.codeberg_account + about.github_account",
       "#about p:last-of-type": "about.hosting_thanks + about.github_pages + about.hosting_text",
-      "#contact h2": "contact.title",
-      "#contact p": "contact.message + contact.follow_up",
       ".copyright": "footer.made_with",
       ".to-top": "navigation.back_to_top"
     },
@@ -230,7 +226,6 @@
       "meta[property='og:description']": "meta.blog_og_description",
       ".brand__text": "hero.name",
       "nav a[href='/#about']": "navigation.about_me",
-      "nav a[href='/#contact']": "navigation.contact",
       "nav a[href='/blogs']": "navigation.blogs",
       ".nav__toggle .visually-hidden": "navigation.toggle_menu",
       ".theme-toggle": "navigation.toggle_dark_mode",
@@ -252,7 +247,6 @@
       "meta[property='og:description']": "meta.error_og_description",
       ".brand__text": "hero.name",
       "nav a[href='index.html#about']": "navigation.about_me",
-      "nav a[href='index.html#contact']": "navigation.contact",
       "nav a[href='blogs.html']": "navigation.blogs",
       ".nav__toggle .visually-hidden": "navigation.toggle_menu",
       ".theme-toggle": "navigation.toggle_dark_mode",
