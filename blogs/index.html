@@ -9,18 +9,24 @@
   <meta property="og:description" content="Latest blog posts" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#2563eb" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../styles.css" />
 </head>
 <body class="no-js">
   <header class="site-header" id="top">
     <div class="container header__inner">
       <div class="header__left">
-        <a href="/" class="brand">
-          <img class="brand__logo" src="assets/favicon.svg" alt="" aria-hidden="true">
+        <a href="../" class="brand">
+          <img class="brand__logo" src="../assets/favicon.svg" alt="" aria-hidden="true">
           <span class="brand__text">Yavuz</span>
         </a>
 
@@ -33,16 +39,15 @@
           </button>
 
           <ul class="nav__list" id="nav-list">
-            <li><a href="/#about">About me</a></li>
-            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="../#about">About me</a></li>
+            <li><a href="../blogs">Blogs</a></li>
           </ul>
         </nav>
       </div>
 
-      <!-- Theme and Language buttons on the far right -->
       <div class="header__controls">
         <button class="language-toggle" id="language-toggle" aria-label="Change language">
-          <img class="flag-icon" id="current-flag" src="assets/gb.png" alt="English" width="18" height="18">
+          <img class="flag-icon" id="current-flag" src="../assets/gb.png" alt="English" width="18" height="18">
         </button>
         
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
@@ -61,13 +66,11 @@
   </header>
 
   <main>
-    <!-- WHY ZERO TRUST -->
     <section class="section">
       <div class="container">
         <div>
           <h1><span class="accent-gradient">Blogs</span></h1>
-          
-          <!-- Blog Controls -->
+
           <div class="blog-controls">
             <div>
               <button id="category-latest" class="category-btn active">Latest</button>
@@ -80,12 +83,10 @@
             </div>
           </div>
 
-          <!-- Blog Posts Container -->
           <div id="blog-posts" class="blog-posts">
             <div class="loading">Loading blog posts...</div>
           </div>
-          
-          <!-- No Posts Message -->
+
           <div id="no-posts" class="no-posts" style="display: none;">
             <p>No blog posts found. Check back later!</p>
           </div>
@@ -94,7 +95,6 @@
     </section>
   </main>
 
-  <!-- Disclaimer Footer -->
   <div class="disclaimer-footer">
     <div class="container">
       <p>⚠️ All content is purely educational. No responsibility taken.</p>
@@ -104,7 +104,7 @@
   <footer class="site-footer">
     <div class="container footer__grid">
       <div class="brand brand--footer">
-        <img class="brand__logo" src="assets/favicon.svg" alt="" aria-hidden="true">
+        <img class="brand__logo" src="../assets/favicon.svg" alt="" aria-hidden="true">
         <span class="brand__text">Yavuz</span>
       </div>
       <p class="copyright">Made with ❤️ and 💻</p>
@@ -112,6 +112,7 @@
     </div>
   </footer>
 
+  <!-- JS -->
   <script src="../script.js" defer></script>
 </body>
 </html>
